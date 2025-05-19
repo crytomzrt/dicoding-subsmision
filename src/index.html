@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.png" />
+    <title>Stories App</title>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <!-- Check if Leaflet loaded properly -->
+    <script>
+      window.addEventListener('load', function() {
+        if (typeof L === 'undefined') {
+          console.error('Leaflet library failed to load! Trying to reload...');
+          
+          // Try to reload Leaflet
+          const script = document.createElement('script');
+          script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+          script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+          script.crossOrigin = '';
+          script.onload = function() {
+            console.log('Leaflet library loaded successfully on retry');
+          };
+          document.head.appendChild(script);
+        } else {
+          console.log('Leaflet library loaded successfully');
+        }
+      });
+    </script>
+
+    <script type="module" src="/scripts/index.js"></script>
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+  </head>
+  <body>
+    <header>
+      <div class="main-header container">
+        <a href="#/" class="skip-link">Skip to content</a>
+        <a class="brand-name" href="#/">
+          <i class="fas fa-book-open"></i>
+          <span>Stories App</span>
+        </a>
+
+        <nav aria-label="Main navigation" id="navigation-drawer" class="navigation-drawer">
+          <ul id="nav-list" class="nav-list">
+            <li><a href="#/"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#/about"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#/login" id="login-link"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            <li><a href="#/addstory"><i class="fas fa-plus-circle"></i> Add Story</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button id="push-toggle-btn">
+            <i class="fas fa-bell"></i> Subscribe
+          </button>
+          <button id="drawer-button" class="drawer-button">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="main-content"></main>
+  </body>
+</html>
